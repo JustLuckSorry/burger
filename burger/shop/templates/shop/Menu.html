@@ -1,0 +1,24 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+МЕНЮ
+{% endblock %}
+
+{% block content %}
+
+{% include "shop/components/header.html" %}
+
+<!-- bradcam_area_start -->
+<div class="bradcam_area breadcam_bg overlay">
+    <h3>Меню</h3>
+</div>
+<!-- bradcam_area_end -->
+
+{% include "shop/components/vip_area.html" %}
+{% include "shop/components/best_area.html" %}
+
+{% include "shop/components/testimony.html" %}
+{% include "shop/components/insta.html" %}
+{% include "shop/components/footer.html" %}
+
+{% endblock %}
