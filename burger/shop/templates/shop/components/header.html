@@ -7,23 +7,15 @@
                     <div class="col-xl-5 col-lg-5">
                         <div class="main-menu  d-none d-lg-block">
                             <nav>
+                                {% with request.resolver_match.url_name as url_name %}
                                 <ul id="navigation">
-                                    <li><a class="active" href="{% url 'home' %}">Главная</a></li>
-                                    <li><a href="{% url 'menu' %}">Меню</a></li>
-                                    <li><a href="{% url 'blog' %}">Блог</a></li>
-<!--                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>-->
-<!--                                            <ul class="submenu">-->
-<!--                                                <li><a href="blog.html">blog</a></li>-->
-<!--                                                <li><a href="single-blog.html">single-blog</a></li>-->
-<!--                                            </ul>-->
-<!--                                        </li>-->
-<!--                                    <li><a href="#">Pages <i class="ti-angle-down"></i></a>-->
-<!--                                        <ul class="submenu">-->
-<!--                                            <li><a href="elements.html">elements</a></li>-->
-<!--                                        </ul>-->
-                                    <li><a href="{% url 'about' %}">О нас</a></li>
-                                    <li><a href="{% url 'contact' %}">Контакты</a></li>
+                                    <li><a class="{% if url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Главная</a></li>
+                                    <li><a class="{% if url_name == 'menu' %}active{% endif %}" href="{% url 'menu' %}">Меню</a></li>
+                                    <li><a class="{% if url_name == 'blog' %}active{% endif %}" href="{% url 'blog' %}">Блог</a></li>
+                                    <li><a class="{% if url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">О нас</a></li>
+                                    <li><a class="{% if url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Контакты</a></li>
                                 </ul>
+                                {% endwith %}
                             </nav>
                         </div>
                     </div>
