@@ -56,6 +56,7 @@ class Product(models.Model):
         null=False,
         blank=False
     )
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.name
