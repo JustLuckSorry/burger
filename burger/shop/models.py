@@ -1,4 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -58,9 +60,28 @@ class Product(models.Model):
     )
     category = models.ForeignKey('Category', on_delete=models.CASCADE, default=1)
 
+    def get_absolute_url(self):
+        return reverse('shop_Menu-element', kwargs={'slug': self.slug})
+
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = 'товар'
         verbose_name_plural = 'товары'
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    is_paid = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'Order: {self.pk}'
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return f'Order {self.order} Product {self.product}'
